@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Invoicer.BussinessLogic;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,12 +10,6 @@ namespace Invoicer.Controllers
 {
     public class UploadController : Controller
     {
-        // GET: Upload
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult UploadFile()
         {
@@ -31,11 +26,13 @@ namespace Invoicer.Controllers
                     string _FileName = Path.GetFileName(file.FileName);
                     string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
                     file.SaveAs(_path);
+                    var stringData = OcrUtils.GetStringDataFromFile(_path);
+                    ViewBag.Message = stringData;
                 }
-                ViewBag.Message = "Plik załadowany poprawnie.";
+                
                 return View();
             }
-            catch(Exception exc)
+            catch
             {
                 ViewBag.Message = "Wystąpił błąd podczas ładowania pliku.";
                 return View();
