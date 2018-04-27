@@ -200,6 +200,14 @@
     <Compile Include="Migrations\201804272113523_initial-model-migration.Designer.cs">
       <DependentUpon>201804272113523_initial-model-migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804272130340_filling-up-dictionaries.cs" />
+    <Compile Include="Migrations\201804272130340_filling-up-dictionaries.Designer.cs">
+      <DependentUpon>201804272130340_filling-up-dictionaries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804272132407_filling-up-dictionaries-2.cs" />
+    <Compile Include="Migrations\201804272132407_filling-up-dictionaries-2.Designer.cs">
+      <DependentUpon>201804272132407_filling-up-dictionaries-2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -300,6 +308,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804272113523_initial-model-migration.resx">
       <DependentUpon>201804272113523_initial-model-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804272130340_filling-up-dictionaries.resx">
+      <DependentUpon>201804272130340_filling-up-dictionaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804272132407_filling-up-dictionaries-2.resx">
+      <DependentUpon>201804272132407_filling-up-dictionaries-2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
