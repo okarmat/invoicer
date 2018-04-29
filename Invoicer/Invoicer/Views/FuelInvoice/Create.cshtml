@@ -1,0 +1,39 @@
+﻿@model Invoicer.ViewModels.FuelInvoiceFormViewModel
+@{
+    ViewBag.Title = "FuelInvoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tworzenie nowej faktury paliwowej</h2>
+
+@using (Html.BeginForm("Create", "FuelInvoice", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.FuelType)        
+        @Html.DropDownListFor(m => m.FuelType, new SelectList(Model.FuelTypes, "Id", "Name"), "Wybierz rodzaj paliwa...", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.RefuelingDate)
+        @Html.TextBoxFor(m => m.RefuelingDate, new { @class = "datefield", type = "date"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Amount)
+        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control"})
+        @Html.ValidationMessageFor(m => m.Amount)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.GasStation)
+        <br />
+        @Html.DropDownListFor(m => m.GasStation, new SelectList(Model.GasStations, "Id", "Name"), "Wybierz stację paliw...", new { @class = "form-control" })
+    </div>
+    
+    <div>
+        @Html.LabelFor(m => m.CurrencyType)
+        @Html.DropDownListFor(m => m.CurrencyType, new SelectList(Model.CurrencyTypes, "Id", "Name"), "Wybierz walutę...", new { @class = "form-control" })
+    </div>
+    
+    <button type="submit" class="btn btn-primiary btn-lg">Zapisz</button>
+}
