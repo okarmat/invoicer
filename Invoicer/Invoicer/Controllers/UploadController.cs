@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Invoicer.Controllers
 {
+    [Authorize]
     public class UploadController : Controller
     {
         [HttpGet]
@@ -27,6 +28,7 @@ namespace Invoicer.Controllers
                     string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
                     file.SaveAs(_path);
                     var stringData = OcrUtils.GetStringDataFromFile(_path);
+                    System.IO.File.Delete(_path);
                     ViewBag.Message = stringData;
                 }
                 
