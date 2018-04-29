@@ -53,7 +53,16 @@ namespace Invoicer.Controllers
 
             var fuelInvoice = new FuelInvoice
             {
-                UserId = User.Identity.GetUserId()
+                InvoiceTypeId = 1,
+                FuelTypeId = viewModel.FuelType,
+                RefuelingDate = DateTime.Parse(viewModel.RefuelingDate),
+                Amount = viewModel.Amount.Value,
+                CurrencyId = viewModel.CurrencyType,
+                UnitPrice = viewModel.UnitPrice.Value,
+                Quantity = viewModel.Quantity.Value,
+                GasStationId = viewModel.GasStation,
+                MeterStatus = viewModel.MeterStatus.Value,
+                UserId = User.Identity.GetUserId()                
             };
 
             _unitOfWork.FuelInvoices.Add(fuelInvoice);

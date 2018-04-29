@@ -222,6 +222,10 @@
     <Compile Include="Migrations\201804272132407_filling-up-dictionaries-2.Designer.cs">
       <DependentUpon>201804272132407_filling-up-dictionaries-2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804291147347_model-modification.cs" />
+    <Compile Include="Migrations\201804291147347_model-modification.Designer.cs">
+      <DependentUpon>201804291147347_model-modification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804272132407_filling-up-dictionaries-2.resx">
       <DependentUpon>201804272132407_filling-up-dictionaries-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804291147347_model-modification.resx">
+      <DependentUpon>201804291147347_model-modification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

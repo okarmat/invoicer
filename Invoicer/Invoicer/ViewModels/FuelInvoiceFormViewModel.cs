@@ -12,28 +12,38 @@ namespace Invoicer.ViewModels
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Rodzaj paliwa")]
         public int FuelType { get; set; }
-
+        
         [Required]
+        [Display(Name = "Data tankowania")]
         public string RefuelingDate { get; set; }
 
         [Required]
-        [RegularExpression("(\\d{1,8}\\,\\d{1,6})", ErrorMessage = "Wprowadź cenę")]
-        public decimal Amount { get; set; }
+        [RegularExpression("(^\\d{1,8}(\\.\\d{1,2})?$)", ErrorMessage = "Niepoprawny format ceny")]
+        [Display(Name = "Cena")]
+        public decimal? Amount { get; set; }
 
         [Required]
+        [Display(Name = "Waluta")]
         public int CurrencyType { get; set; }
 
         [Required]
-        public decimal UnitPrice { get; set; }
+        [Display(Name = "Cena za litr")]
+        [RegularExpression("(^\\d{1,2}(\\.\\d{1,2})?$)", ErrorMessage = "Niepoprawny format ceny")]
+        public decimal? UnitPrice { get; set; }
 
         [Required]
-        public decimal Quantity { get; set; }
+        [Display(Name = "Ilość litrów")]
+        [RegularExpression("(^\\d{1,9}?$)", ErrorMessage = "Niepoprawny ilości kilometrów")]
+        public decimal? Quantity { get; set; }
 
+        [Display(Name = "Stacja paliw")]
         public int GasStation { get; set; }
 
         [Required]
-        public int MeterStatus { get; set; }
+        [Display(Name = "Stan licznika")]
+        public int? MeterStatus { get; set; }
 
         public IEnumerable<FuelType> FuelTypes { get; set; }
 

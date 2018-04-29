@@ -18,6 +18,7 @@ namespace Invoicer.Models
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
+            FuelInvoices = new FuelInvoiceRepository(context);
             FuelTypes = new FuelTypeRepository(context);
             CurrencyTypes = new CurrencyTypeRepository(context);
             GasStations = new GasStationRepository(context);

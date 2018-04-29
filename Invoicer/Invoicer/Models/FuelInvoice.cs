@@ -14,9 +14,9 @@ namespace Invoicer.Models
 
         public DateTime RefuelingDate { get; set; }
 
-        public int PetrolStationId { get; set; }
+        public int GasStationId { get; set; }
 
-        public GasStation PetrolStation { get; set; }
+        public GasStation GasStation { get; set; }
 
         public FuelType FuelType { get; set; }
     }
