@@ -30,6 +30,8 @@ namespace Invoicer.Controllers
                     var stringData = OcrUtils.GetStringDataFromFile(_path);
                     System.IO.File.Delete(_path);
                     ViewBag.Message = stringData;
+
+                    return RedirectToAction("Create", "FuelInvoice"); ;
                 }
                 
                 return View();

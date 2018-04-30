@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-
+using Invoicer.Models.Enums;
 
 namespace Invoicer.Controllers
 {
@@ -53,7 +53,7 @@ namespace Invoicer.Controllers
 
             var fuelInvoice = new FuelInvoice
             {
-                InvoiceTypeId = 1,
+                InvoiceTypeId = (int)InvoiceTypeEnum.FuelInvoice,
                 FuelTypeId = viewModel.FuelType,
                 RefuelingDate = DateTime.Parse(viewModel.RefuelingDate),
                 Amount = viewModel.Amount.Value,

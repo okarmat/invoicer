@@ -11,6 +11,7 @@ namespace Invoicer.Models
         private readonly ApplicationDbContext _context;
 
         public IFuelInvoiceRepository FuelInvoices { get; set; }
+        public IInvoiceTypeRepository InvoiceTypes { get; set; }
         public IFuelTypeRepository FuelTypes { get; set; }
         public ICurrencyTypeRepository CurrencyTypes { get; set; }
         public IGasStationRepository GasStations { get; set; }
@@ -19,6 +20,7 @@ namespace Invoicer.Models
         {
             _context = context;
             FuelInvoices = new FuelInvoiceRepository(context);
+            InvoiceTypes = new InvoiceTypeRepository(context);
             FuelTypes = new FuelTypeRepository(context);
             CurrencyTypes = new CurrencyTypeRepository(context);
             GasStations = new GasStationRepository(context);
