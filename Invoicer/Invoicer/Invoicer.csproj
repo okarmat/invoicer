@@ -211,6 +211,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\OcrUtils.cs" />
+    <Compile Include="Infrastructure\Parsers\BPInvoiceParser.cs" />
+    <Compile Include="Infrastructure\Parsers\CircleInvoiceParser.cs" />
+    <Compile Include="Infrastructure\Parsers\IFuelInvoiceParser.cs" />
+    <Compile Include="Infrastructure\Parsers\InvoiceParserFactory.cs" />
+    <Compile Include="Infrastructure\Parsers\LotosInvoiceParser.cs" />
+    <Compile Include="Infrastructure\Parsers\OrlenInvoiceParser.cs" />
     <Compile Include="Migrations\201804272113523_initial-model-migration.cs" />
     <Compile Include="Migrations\201804272113523_initial-model-migration.Designer.cs">
       <DependentUpon>201804272113523_initial-model-migration.cs</DependentUpon>
@@ -227,11 +233,21 @@
     <Compile Include="Migrations\201804291147347_model-modification.Designer.cs">
       <DependentUpon>201804291147347_model-modification.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805010921084_model-modifications.cs" />
+    <Compile Include="Migrations\201805010921084_model-modifications.Designer.cs">
+      <DependentUpon>201805010921084_model-modifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805011036001_renaming-fuel-invoice-type-directory-record.cs" />
+    <Compile Include="Migrations\201805011036001_renaming-fuel-invoice-type-directory-record.Designer.cs">
+      <DependentUpon>201805011036001_renaming-fuel-invoice-type-directory-record.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\CurrencyType.cs" />
     <Compile Include="Models\DictionaryType.cs" />
+    <Compile Include="Models\Enums\FuelTypeEnum.cs" />
+    <Compile Include="Models\Enums\GasStationEnum.cs" />
     <Compile Include="Models\Enums\InvoiceTypeEnum.cs" />
     <Compile Include="Models\FuelInvoice.cs" />
     <Compile Include="Models\IUnitOfWork.cs" />
@@ -319,7 +335,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\Parsers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -347,6 +362,23 @@
     <EmbeddedResource Include="Migrations\201804291147347_model-modification.resx">
       <DependentUpon>201804291147347_model-modification.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805010921084_model-modifications.resx">
+      <DependentUpon>201805010921084_model-modifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011036001_renaming-fuel-invoice-type-directory-record.resx">
+      <DependentUpon>201805011036001_renaming-fuel-invoice-type-directory-record.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="MODI">
+      <Guid>{A5EDEDF4-2BBC-45F3-822B-E60C278A1A79}</Guid>
+      <VersionMajor>12</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

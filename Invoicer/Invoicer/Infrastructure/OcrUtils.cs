@@ -27,7 +27,7 @@ namespace Invoicer.Infrastructure
             return image.Layout.Text;
         }
 
-        public static object GetFuelInvoicViewModel(string path)
+        public static FuelInvoiceFormViewModel GetFuelInvoicViewModel(string path)
         {
             var stringData = GetTextFromPicture(path);
             var gasStation = GetGasStation(stringData);
