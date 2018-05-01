@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoicer", "Invoicer\Invoic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoicer.Tests", "Invoicer.Tests\Invoicer.Tests.csproj", "{E0E537A6-60F3-4A87-A8C2-1DCB10413410}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invoicer.BussinessLogic", "Invoicer.BussinessLogic\Invoicer.BussinessLogic.csproj", "{5E30EEBE-E37C-4F75-8681-356F4157F728}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{E0E537A6-60F3-4A87-A8C2-1DCB10413410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0E537A6-60F3-4A87-A8C2-1DCB10413410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0E537A6-60F3-4A87-A8C2-1DCB10413410}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E30EEBE-E37C-4F75-8681-356F4157F728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E30EEBE-E37C-4F75-8681-356F4157F728}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E30EEBE-E37C-4F75-8681-356F4157F728}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E30EEBE-E37C-4F75-8681-356F4157F728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

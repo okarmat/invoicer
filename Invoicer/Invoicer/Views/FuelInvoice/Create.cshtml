@@ -51,7 +51,7 @@
         @Html.DropDownListFor(m => m.GasStation, new SelectList(Model.GasStations, "Id", "Name"), "Wybierz stację paliw...", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.GasStation)
     </div>
-    <br>
+    
     <div class="form-group">
         @Html.LabelFor(m => m.MeterStatus)
         <br>

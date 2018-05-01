@@ -1,4 +1,5 @@
-﻿
+﻿@model Invoicer.ViewModels.UploadFileFormViewModel
+
 @{
     ViewBag.Title = "Wczytywanie faktury";
 }
@@ -7,9 +8,14 @@
 
 @using (Html.BeginForm("Uploadfile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    <div class="form-group">
+        Rodzaje faktur
+        @Html.DropDownListFor(m => m.InvoiceType, new SelectList(Model.InvoiceTypes, "Id", "Name"), "Wybierz rodzaj faktury...", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InvoiceType)
+    </div>
+
     <div>
         @Html.TextBox("file", "", new { type = "file" }) <br />
-        <input type="submit" value="Wczytaj fakturę" />
-        @ViewBag.Message
+        <input type="submit" value="Wczytaj fakturę" />        
     </div>
 }

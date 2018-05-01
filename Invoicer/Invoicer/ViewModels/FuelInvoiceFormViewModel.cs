@@ -35,7 +35,7 @@ namespace Invoicer.ViewModels
 
         [Required]
         [Display(Name = "Ilość litrów")]
-        [RegularExpression("(^\\d{1,9}?$)", ErrorMessage = "Niepoprawny ilości kilometrów")]
+        [RegularExpression("(^\\d{1,9}?$)", ErrorMessage = "Niepoprawna ilość litrów")]
         public decimal? Quantity { get; set; }
 
         [Display(Name = "Stacja paliw")]

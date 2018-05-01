@@ -1,4 +1,7 @@
-﻿using Invoicer.BussinessLogic;
+﻿using Invoicer.Infrastructure;
+using Invoicer.Models;
+using Invoicer.Models.Enums;
+using Invoicer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,14 +14,26 @@ namespace Invoicer.Controllers
     [Authorize]
     public class UploadController : Controller
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public UploadController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
+
         [HttpGet]
         public ActionResult UploadFile()
         {
-            return View();
+            var viewModel = new UploadFileFormViewModel
+            {
+                InvoiceTypes = _unitOfWork.InvoiceTypes.GetInvoiceTypes()
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult UploadFile(HttpPostedFileBase file)
+        public ActionResult UploadFile(UploadFileFormViewModel viewModel, HttpPostedFileBase file)
         {
             try
             {
@@ -27,11 +42,11 @@ namespace Invoicer.Controllers
                     string _FileName = Path.GetFileName(file.FileName);
                     string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
                     file.SaveAs(_path);
-                    var stringData = OcrUtils.GetStringDataFromFile(_path);
+                    if(viewModel.InvoiceType == (int)InvoiceTypeEnum.FuelInvoice)
+                        TempData["invoice"] = OcrUtils.GetFuelInvoicViewModel(_path);                      
                     System.IO.File.Delete(_path);
-                    ViewBag.Message = stringData;
 
-                    return RedirectToAction("Create", "FuelInvoice"); ;
+                    return RedirectToAction("Create", "FuelInvoice") ;
                 }
                 
                 return View();

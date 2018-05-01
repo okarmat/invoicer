@@ -29,14 +29,8 @@ namespace Invoicer.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            var viewModel = new FuelInvoiceFormViewModel
-            {
-                CurrencyTypes = _unitOfWork.CurrencyTypes.GetCurrencyTypes(),
-                FuelTypes = _unitOfWork.FuelTypes.GetFuelTypes(),
-                GasStations = _unitOfWork.GasStations.GetGasStations()
-            };
-
-            return View("Create", viewModel);
+            var vm = TempData.Peek("invoice");        
+            return View("Create", vm);
         }
 
         [Authorize]
