@@ -48,6 +48,7 @@ namespace Invoicer.Controllers
             var fuelInvoice = new FuelInvoice
             {
                 InvoiceTypeId = (int)InvoiceTypeEnum.FuelInvoice,
+                InvoiceNumber = viewModel.InvoiceNumber,
                 FuelTypeId = viewModel.FuelType,
                 RefuelingDate = DateTime.Parse(viewModel.RefuelingDate),
                 Amount = viewModel.Amount.Value,

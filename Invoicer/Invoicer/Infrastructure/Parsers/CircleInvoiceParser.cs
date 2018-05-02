@@ -15,7 +15,8 @@ namespace Invoicer.Infrastructure.Parsers
         {
             var result = new FuelInvoiceFormViewModel
             {
-                GasStation = (int)GasStationEnum.Circle,                
+                GasStation = (int)GasStationEnum.Circle,
+                InvoiceNumber = GetNumber(data),
                 FuelType = GetFuelType(data),                
                 RefuelingDate = GetRefuelingDate(data),
                 Amount = GetAmount(data),
@@ -27,31 +28,76 @@ namespace Invoicer.Infrastructure.Parsers
             return result;
         }
 
-        private int GetCurrencyType(string data)
+        private string GetNumber(string data)
         {
-            return 0;
-        }
-
-        private decimal? GetQuantity(string data)
-        {
-            return null;
-        }
-
-        private decimal? GetUnitPrice(string data)
-        {
-            return null;
-        }
-
-        private decimal? GetAmount(string data)
-        {
-            string pattern = @"\d{1,3}\,\d{2}+";
+            string pattern = @"[A-Z0-9]{16}";
 
             Regex regularExpression = new Regex(pattern);
 
             var result = regularExpression.Match(data).Value;
 
+            return result;
+        }
 
-            return null;
+        private int GetCurrencyType(string data)
+        {
+            CurrencyTypeEnum currencyType;
+
+            if (data.Contains("PLN"))
+                currencyType = CurrencyTypeEnum.PLN;
+            else if (data.Contains("USD"))
+                currencyType = CurrencyTypeEnum.USD;
+            else if (data.Contains("EUR"))
+                currencyType = CurrencyTypeEnum.EUR;
+            else
+                currencyType = CurrencyTypeEnum.Unknown;
+
+            return (int)currencyType;
+        }
+
+        private decimal? GetQuantity(string data)
+        {
+            string pattern = @"\d{1,3},\d{2}";
+
+            Regex regularExpression = new Regex(pattern);
+
+            var matchValue = regularExpression.Match(data);
+
+            if (matchValue == null) return null;
+
+            var result = decimal.Parse(matchValue.Value);
+
+            return result;
+        }
+
+        private decimal? GetUnitPrice(string data)
+        {
+            string pattern = @"(litry \* )(\d{1,3},\d{2})";
+
+
+            Regex regularExpression = new Regex(pattern);
+
+            var matchValue = regularExpression.Match(data).Groups;
+
+            if (matchValue.Count != 3 || matchValue[2].Value == null) return null;
+            var result = decimal.Parse(matchValue[2].Value);
+
+            return result;
+        }
+
+        private decimal? GetAmount(string data)
+        {
+            string pattern = @"\d{1,3}\,\d{2}";           
+
+            var matches = Regex.Matches(data, pattern);
+            if (matches.Count == 0)
+                return null;
+
+            var result = matches.Cast<Match>().
+                Select(m => decimal.Parse(m.Value))
+                .Max();
+
+            return result;
         }
 
         private string GetRefuelingDate(string data)

@@ -14,6 +14,9 @@ namespace Invoicer.Models
         public decimal Amount { get; set; }
 
         [Required]
+        public string InvoiceNumber { get; set; }
+
+        [Required]
         public int CurrencyId { get; set; }
 
         [Required]

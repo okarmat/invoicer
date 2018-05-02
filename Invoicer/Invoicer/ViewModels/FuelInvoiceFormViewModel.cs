@@ -12,6 +12,10 @@ namespace Invoicer.ViewModels
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Numer faktury")]
+        public string InvoiceNumber { get; set; }
+
+        [Required]
         [Display(Name = "Rodzaj paliwa")]
         public int FuelType { get; set; }
         
@@ -20,7 +24,7 @@ namespace Invoicer.ViewModels
         public string RefuelingDate { get; set; }
 
         [Required]
-        [RegularExpression("(^\\d{1,8}(\\.\\d{1,2})?$)", ErrorMessage = "Niepoprawny format ceny")]
+        [RegularExpression("(^\\d{1,8}(\\,\\d{1,2})?$)", ErrorMessage = "Niepoprawny format ceny")]
         [Display(Name = "Cena")]
         public decimal? Amount { get; set; }
 
@@ -30,12 +34,12 @@ namespace Invoicer.ViewModels
 
         [Required]
         [Display(Name = "Cena za litr")]
-        [RegularExpression("(^\\d{1,2}(\\.\\d{1,2})?$)", ErrorMessage = "Niepoprawny format ceny")]
+        [RegularExpression("(^\\d{1,2}(\\,\\d{1,2})?$)", ErrorMessage = "Niepoprawny format ceny")]
         public decimal? UnitPrice { get; set; }
 
         [Required]
         [Display(Name = "Ilość litrów")]
-        [RegularExpression("(^\\d{1,9}?$)", ErrorMessage = "Niepoprawna ilość litrów")]
+        [RegularExpression("(^\\d{1,2}(\\,\\d{1,2})?$)", ErrorMessage = "Niepoprawna ilość litrów")]
         public decimal? Quantity { get; set; }
 
         [Display(Name = "Stacja paliw")]

@@ -9,6 +9,18 @@
 @using (Html.BeginForm("Create", "FuelInvoice", FormMethod.Post))
 {
     <div class="form-group">
+        @Html.LabelFor(m => m.InvoiceNumber)
+        @Html.TextBoxFor(m => m.InvoiceNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InvoiceNumber)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Quantity)
+        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Quantity)
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(m => m.FuelType)
         @Html.DropDownListFor(m => m.FuelType, new SelectList(Model.FuelTypes, "Id", "Name"), "Wybierz rodzaj paliwa...", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.FuelType)
@@ -22,6 +34,13 @@
         @Html.ValidationMessageFor(m => m.RefuelingDate)
     </div>
 
+    <div>
+        @Html.LabelFor(m => m.CurrencyType)
+        @Html.DropDownListFor(m => m.CurrencyType, new SelectList(Model.CurrencyTypes, "Id", "Name"), "Wybierz walutę...", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CurrencyType)
+    </div>
+    <br>
+
     <div class="form-group">
         @Html.LabelFor(m => m.Amount)
         @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
@@ -34,12 +53,6 @@
         @Html.ValidationMessageFor(m => m.UnitPrice)
     </div>
 
-    <div>
-        @Html.LabelFor(m => m.CurrencyType)
-        @Html.DropDownListFor(m => m.CurrencyType, new SelectList(Model.CurrencyTypes, "Id", "Name"), "Wybierz walutę...", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CurrencyType)
-    </div>
-    <br>
     <div class="form-group">
         @Html.LabelFor(m => m.Quantity)
         @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
@@ -51,7 +64,7 @@
         @Html.DropDownListFor(m => m.GasStation, new SelectList(Model.GasStations, "Id", "Name"), "Wybierz stację paliw...", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.GasStation)
     </div>
-    
+
     <div class="form-group">
         @Html.LabelFor(m => m.MeterStatus)
         <br>
