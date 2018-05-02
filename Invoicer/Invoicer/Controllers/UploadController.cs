@@ -35,35 +35,27 @@ namespace Invoicer.Controllers
         [HttpPost]
         public ActionResult UploadFile(UploadFileFormViewModel viewModel, HttpPostedFileBase file)
         {
-            try
+            viewModel.InvoiceTypes = _unitOfWork.InvoiceTypes.GetInvoiceTypes();
+
+            if (file.ContentLength > 0)
             {
-                viewModel.InvoiceTypes = _unitOfWork.InvoiceTypes.GetInvoiceTypes();
-
-                if (file.ContentLength > 0)
-                {                                           
-                    string _FileName = Path.GetFileName(file.FileName);
-                    string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
-                    file.SaveAs(_path);
-                    if (viewModel.InvoiceType == (int)InvoiceTypeEnum.FuelInvoice)
-                    {
-                        var fuelInvoiceViewModel = OcrUtils.GetFuelInvoicViewModel(_path);
-                        fuelInvoiceViewModel.CurrencyTypes = _unitOfWork.CurrencyTypes.GetCurrencyTypes().ToList();
-                        fuelInvoiceViewModel.FuelTypes = _unitOfWork.FuelTypes.GetFuelTypes().ToList();
-                        fuelInvoiceViewModel.GasStations = _unitOfWork.GasStations.GetGasStations().ToList();
-                        TempData["invoice"] = fuelInvoiceViewModel;
-                    }
-                    System.IO.File.Delete(_path);
-
-                    return RedirectToAction("Create", "FuelInvoice") ;
+                string _FileName = Path.GetFileName(file.FileName);
+                string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
+                file.SaveAs(_path);
+                if (viewModel.InvoiceType == (int)InvoiceTypeEnum.FuelInvoice)
+                {
+                    var fuelInvoiceViewModel = OcrUtils.GetFuelInvoicViewModel(_path);
+                    fuelInvoiceViewModel.CurrencyTypes = _unitOfWork.CurrencyTypes.GetCurrencyTypes().ToList();
+                    fuelInvoiceViewModel.FuelTypes = _unitOfWork.FuelTypes.GetFuelTypes().ToList();
+                    fuelInvoiceViewModel.GasStations = _unitOfWork.GasStations.GetGasStations().ToList();
+                    TempData["invoice"] = fuelInvoiceViewModel;
                 }
-                
-                return View();
+                System.IO.File.Delete(_path);
+
+                return RedirectToAction("Create", "FuelInvoice");
             }
-            catch(Exception exception)
-            {
-                ViewBag.Message = "Wystąpił błąd podczas ładowania pliku.";
-                return View();
-            }
+
+            return View();
         }
     }
 }
