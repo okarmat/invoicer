@@ -47,6 +47,7 @@ namespace Invoicer.ViewModels
 
         [Required]
         [Display(Name = "Stan licznika")]
+        [Range(1,1000000)]
         public int? MeterStatus { get; set; }
 
         public IEnumerable<FuelType> FuelTypes { get; set; }
