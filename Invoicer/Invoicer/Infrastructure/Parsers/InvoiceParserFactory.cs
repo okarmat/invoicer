@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Invoicer.Infrastructure.Parsers
 {
-    public class InvoiceParserFactory
+    public class FuelInvoiceParserFactory
     {
         public virtual IFuelInvoiceParser CreateFuelInvoiceParser(GasStationEnum gasStation)
         {

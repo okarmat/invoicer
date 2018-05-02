@@ -210,13 +210,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\OcrUtils.cs" />
+    <Compile Include="Infrastructure\Providers\FuelInvoiceViewModelProvider.cs" />
     <Compile Include="Infrastructure\Parsers\BPInvoiceParser.cs" />
     <Compile Include="Infrastructure\Parsers\CircleInvoiceParser.cs" />
+    <Compile Include="Infrastructure\Parsers\FuelInvoiceParser.cs" />
     <Compile Include="Infrastructure\Parsers\IFuelInvoiceParser.cs" />
     <Compile Include="Infrastructure\Parsers\InvoiceParserFactory.cs" />
     <Compile Include="Infrastructure\Parsers\LotosInvoiceParser.cs" />
     <Compile Include="Infrastructure\Parsers\OrlenInvoiceParser.cs" />
+    <Compile Include="Infrastructure\Providers\IFuelInvoiceViewModelProvider.cs" />
+    <Compile Include="Infrastructure\Providers\OcrTextDataProvider.cs" />
+    <Compile Include="Infrastructure\Providers\ITextDataProvider.cs" />
     <Compile Include="Migrations\201804272113523_initial-model-migration.cs" />
     <Compile Include="Migrations\201804272113523_initial-model-migration.Designer.cs">
       <DependentUpon>201804272113523_initial-model-migration.cs</DependentUpon>

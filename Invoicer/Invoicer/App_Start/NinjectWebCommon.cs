@@ -5,6 +5,8 @@ namespace Invoicer.App_Start
 {
     using System;
     using System.Web;
+    using Invoicer.Infrastructure;
+    using Invoicer.Infrastructure.Providers;
     using Invoicer.Models;
     using Invoicer.Repositories;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -67,6 +69,8 @@ namespace Invoicer.App_Start
             kernel.Bind<IFuelTypeRepository>().To<FuelTypeRepository>();
             kernel.Bind<ICurrencyTypeRepository>().To<CurrencyTypeRepository>();
             kernel.Bind<IGasStationRepository>().To<GasStationRepository>();
+            kernel.Bind<ITextDataProvider>().To<OcrTextDataProvider>();
+            kernel.Bind<IFuelInvoiceViewModelProvider>().To<FuelInvoiceViewModelProvider>();
         }        
     }
 }
