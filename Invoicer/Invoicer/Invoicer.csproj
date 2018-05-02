@@ -241,11 +241,32 @@
     <Compile Include="Migrations\201805011036001_renaming-fuel-invoice-type-directory-record.Designer.cs">
       <DependentUpon>201805011036001_renaming-fuel-invoice-type-directory-record.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805011118341_AddUnknownPositrionToCurrencyTypeDirectory.cs" />
+    <Compile Include="Migrations\201805011118341_AddUnknownPositrionToCurrencyTypeDirectory.Designer.cs">
+      <DependentUpon>201805011118341_AddUnknownPositrionToCurrencyTypeDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805011254036_ModifyNumberColumnTypeInInvoiceModel.cs" />
+    <Compile Include="Migrations\201805011254036_ModifyNumberColumnTypeInInvoiceModel.Designer.cs">
+      <DependentUpon>201805011254036_ModifyNumberColumnTypeInInvoiceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805011337593_RepairMigrations.cs" />
+    <Compile Include="Migrations\201805011337593_RepairMigrations.Designer.cs">
+      <DependentUpon>201805011337593_RepairMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805011344132_RepairMigration3.cs" />
+    <Compile Include="Migrations\201805011344132_RepairMigration3.Designer.cs">
+      <DependentUpon>201805011344132_RepairMigration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805011345139_RepairMigration4.cs" />
+    <Compile Include="Migrations\201805011345139_RepairMigration4.Designer.cs">
+      <DependentUpon>201805011345139_RepairMigration4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\CurrencyType.cs" />
     <Compile Include="Models\DictionaryType.cs" />
+    <Compile Include="Models\Enums\CurrencyTypeEnum.cs" />
     <Compile Include="Models\Enums\FuelTypeEnum.cs" />
     <Compile Include="Models\Enums\GasStationEnum.cs" />
     <Compile Include="Models\Enums\InvoiceTypeEnum.cs" />
@@ -367,6 +388,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805011036001_renaming-fuel-invoice-type-directory-record.resx">
       <DependentUpon>201805011036001_renaming-fuel-invoice-type-directory-record.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011118341_AddUnknownPositrionToCurrencyTypeDirectory.resx">
+      <DependentUpon>201805011118341_AddUnknownPositrionToCurrencyTypeDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011254036_ModifyNumberColumnTypeInInvoiceModel.resx">
+      <DependentUpon>201805011254036_ModifyNumberColumnTypeInInvoiceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011337593_RepairMigrations.resx">
+      <DependentUpon>201805011337593_RepairMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011344132_RepairMigration3.resx">
+      <DependentUpon>201805011344132_RepairMigration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011345139_RepairMigration4.resx">
+      <DependentUpon>201805011345139_RepairMigration4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
