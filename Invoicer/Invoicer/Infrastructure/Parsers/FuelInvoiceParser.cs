@@ -44,14 +44,15 @@ namespace Invoicer.Infrastructure.Parsers
 
         protected decimal? GetUnitPrice(string data)
         {
-            string pattern = @"\d{1}\,\d{2}";
+            string pattern = @"\d{1,3}\,\d{2}";
 
             var matches = Regex.Matches(data, pattern);
             if (matches.Count == 0)
                 return null;
 
-            var result = matches.Cast<Match>().
-                Select(m => decimal.Parse(m.Value))
+            var result = matches.Cast<Match>()
+                .Where(m => decimal.Parse(m.Value) > 0)
+                .Select(m => decimal.Parse(m.Value))                
                 .Min();
 
             return result;
