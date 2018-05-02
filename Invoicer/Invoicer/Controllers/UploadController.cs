@@ -1,4 +1,6 @@
 ﻿using Invoicer.Infrastructure;
+using Invoicer.Infrastructure.Parsers;
+using Invoicer.Infrastructure.Providers;
 using Invoicer.Models;
 using Invoicer.Models.Enums;
 using Invoicer.ViewModels;
@@ -15,10 +17,14 @@ namespace Invoicer.Controllers
     public class UploadController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IFuelInvoiceViewModelProvider _fuelInvoiceViewModelProvider;
 
-        public UploadController(IUnitOfWork unitOfWork)
+        public UploadController(
+            IUnitOfWork unitOfWork,
+            IFuelInvoiceViewModelProvider fuelInvoiceViewModelProvider)
         {
             _unitOfWork = unitOfWork;
+            _fuelInvoiceViewModelProvider = fuelInvoiceViewModelProvider;
         }
 
         [HttpGet]
@@ -44,7 +50,7 @@ namespace Invoicer.Controllers
                 file.SaveAs(_path);
                 if (viewModel.InvoiceType == (int)InvoiceTypeEnum.FuelInvoice)
                 {
-                    var fuelInvoiceViewModel = OcrUtils.GetFuelInvoicViewModel(_path);
+                    var fuelInvoiceViewModel = _fuelInvoiceViewModelProvider.GetFuelInvoiceViewModel(_path);
                     fuelInvoiceViewModel.CurrencyTypes = _unitOfWork.CurrencyTypes.GetCurrencyTypes().ToList();
                     fuelInvoiceViewModel.FuelTypes = _unitOfWork.FuelTypes.GetFuelTypes().ToList();
                     fuelInvoiceViewModel.GasStations = _unitOfWork.GasStations.GetGasStations().ToList();
