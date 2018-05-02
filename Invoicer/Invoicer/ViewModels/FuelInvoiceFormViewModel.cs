@@ -26,6 +26,7 @@ namespace Invoicer.ViewModels
         [Required]
         [RegularExpression("(^\\d{1,8}(\\,\\d{1,2})?$)", ErrorMessage = "Niepoprawny format ceny")]
         [Display(Name = "Cena")]
+        [Range(0.01, 1000000)]
         public decimal? Amount { get; set; }
 
         [Required]
@@ -35,11 +36,13 @@ namespace Invoicer.ViewModels
         [Required]
         [Display(Name = "Cena za litr")]
         [RegularExpression("(^\\d{1,2}(\\,\\d{1,2})?$)", ErrorMessage = "Niepoprawny format ceny")]
+        [Range(0.01, 10.00)]
         public decimal? UnitPrice { get; set; }
 
         [Required]
         [Display(Name = "Ilość litrów")]
         [RegularExpression("(^\\d{1,2}(\\,\\d{1,2})?$)", ErrorMessage = "Niepoprawna ilość litrów")]
+        [Range(0.01, 100.00)]
         public decimal? Quantity { get; set; }
 
         [Display(Name = "Stacja paliw")]
