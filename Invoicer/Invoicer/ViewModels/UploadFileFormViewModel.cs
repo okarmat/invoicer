@@ -10,6 +10,7 @@ namespace Invoicer.ViewModels
     public class UploadFileFormViewModel
     {
         [Required]
+        [Display(Name = "Rodzaj faktury")]
         public int InvoiceType { get; set; }
 
         public IEnumerable<InvoiceType> InvoiceTypes { get; set; }

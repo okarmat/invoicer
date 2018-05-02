@@ -9,10 +9,22 @@
 @using (Html.BeginForm("Uploadfile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 <div class="form-group">
-    Rodzaje faktur
-    @Html.DropDownListFor(m => m.InvoiceType, new SelectList(Model.InvoiceTypes, "Id", "Name"), "Wybierz rodzaj faktury...", new { @class = "form-control" })    
-    <b>@Html.ValidationMessageFor(m => m.InvoiceType)</b>
-</div>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div>Popraw wskazane błędy</div>
+    }
+
+    @Html.LabelFor(m => m.InvoiceType)
+    @Html.DropDownListFor(m => m.InvoiceType, new SelectList(Model.InvoiceTypes, "Id", "Name"), "Wybierz rodzaj faktury...", new { @class = "form-control" })
+
+    @if (ViewData.ModelState["InvoiceType"] != null && ViewData.ModelState["InvoiceType"].Errors.Count > 0)
+    {
+        <br>
+        <div class="alert alert-warning" role="alert">
+            @Html.ValidationMessageFor(m => m.InvoiceType)
+        </div>
+    }
+    </div>
 
     <div>
         @Html.TextBox("file", "", new { type = "file" }) <br />

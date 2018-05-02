@@ -37,7 +37,7 @@ namespace Invoicer.Controllers
         {
             viewModel.InvoiceTypes = _unitOfWork.InvoiceTypes.GetInvoiceTypes();
 
-            if (file.ContentLength > 0)
+            if (file != null && file.ContentLength > 0)
             {
                 string _FileName = Path.GetFileName(file.FileName);
                 string _path = Path.Combine(Server.MapPath("~/UploadedFiles"), _FileName);
@@ -54,8 +54,8 @@ namespace Invoicer.Controllers
 
                 return RedirectToAction("Create", "FuelInvoice");
             }
-
-            return View();
+            
+            return View(viewModel);
         }
     }
 }
