@@ -8,15 +8,15 @@
 
 @using (Html.BeginForm("Uploadfile", "Upload", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-<div class="form-group">
-    @Html.LabelFor(m => m.InvoiceType)
-    @Html.DropDownListFor(m => m.InvoiceType, new SelectList(Model.InvoiceTypes, "Id", "Name"), "Wybierz rodzaj faktury...", new { @class = "form-control" })
-    <b>@Html.ValidationMessageFor(m => m.InvoiceType, null, new { @class = "text-danger" })</b>
-   
+    <div class="form-group">
+        @Html.LabelFor(m => m.InvoiceType)
+        @Html.DropDownListFor(m => m.InvoiceType, new SelectList(Model.InvoiceTypes, "Id", "Name"), "Wybierz rodzaj faktury...", new { @class = "form-control" })
+        <b>@Html.ValidationMessageFor(m => m.InvoiceType, null, new { @class = "text-danger" })</b>
+
     </div>
 
-    <div>
+     <div>
         @Html.TextBox("file", "", new { type = "file" }) <br />
-        <input type="submit" class="btn btn-primary btn-lg" value="Wczytaj fakturę" />        
+        <input type="submit" class="btn btn-primary" value="Wczytaj fakturę" />
     </div>
 }
