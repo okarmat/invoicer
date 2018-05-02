@@ -10,66 +10,60 @@
 {
     <div class="form-group">
         @Html.LabelFor(m => m.InvoiceNumber)
-        @Html.TextBoxFor(m => m.InvoiceNumber, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.InvoiceNumber)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Quantity)
-        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Quantity)
+        @Html.TextBoxFor(m => m.InvoiceNumber, new { @class = "form-control" })        
+        <b>@Html.ValidationMessageFor(m => m.InvoiceNumber)</b>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.FuelType)
-        @Html.DropDownListFor(m => m.FuelType, new SelectList(Model.FuelTypes, "Id", "Name"), "Wybierz rodzaj paliwa...", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.FuelType)
+        @Html.DropDownListFor(m => m.FuelType, new SelectList(Model.FuelTypes, "Id", "Name"), "Wybierz rodzaj paliwa...", new { @class = "form-control" })        
+        <b>@Html.ValidationMessageFor(m => m.FuelType)</b>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.RefuelingDate)
         <br>
         @Html.TextBoxFor(m => m.RefuelingDate, new { @class = "datefield", type = "date" })
-        <br>
-        @Html.ValidationMessageFor(m => m.RefuelingDate)
+        <br>        
+        <b>@Html.ValidationMessageFor(m => m.RefuelingDate)</b>
     </div>
 
     <div>
         @Html.LabelFor(m => m.CurrencyType)
         @Html.DropDownListFor(m => m.CurrencyType, new SelectList(Model.CurrencyTypes, "Id", "Name"), "Wybierz walutę...", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CurrencyType)
+        <b>@Html.ValidationMessageFor(m => m.CurrencyType)</b>
     </div>
     <br>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Amount)
         @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Amount)
+        <b>@Html.ValidationMessageFor(m => m.Amount)</b>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.UnitPrice)
         @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.UnitPrice)
+        <b>@Html.ValidationMessageFor(m => m.UnitPrice)</b>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Quantity)
         @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Quantity)
+        <b>@Html.ValidationMessageFor(m => m.Quantity)</b>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.GasStation)
         @Html.DropDownListFor(m => m.GasStation, new SelectList(Model.GasStations, "Id", "Name"), "Wybierz stację paliw...", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.GasStation)
+        <b>@Html.ValidationMessageFor(m => m.GasStation)</b>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.MeterStatus)
         <br>
-        @Html.TextBoxFor(m => m.MeterStatus, new { @type = "number", @class = "span4", @min = "0" })
-        @Html.ValidationMessageFor(m => m.MeterStatus)
+        @Html.TextBoxFor(m => m.MeterStatus, new { @type = "number", @class = "span4", @min = "0" })        
+        <b>@Html.ValidationMessageFor(m => m.MeterStatus)</b>
     </div>
     <br>
     <button type="submit" class="btn btn-primary btn-lg">Zapisz</button>
