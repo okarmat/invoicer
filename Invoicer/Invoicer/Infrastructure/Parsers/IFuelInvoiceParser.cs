@@ -4,6 +4,6 @@ namespace Invoicer.Infrastructure.Parsers
 {
     public interface IFuelInvoiceParser
     {
-        FuelInvoiceFormViewModel GetFuelInvoiceFormViewMode(string data);
+        FuelInvoiceFormViewModel GetFuelInvoiceFormViewModel(string data);
     }
 }

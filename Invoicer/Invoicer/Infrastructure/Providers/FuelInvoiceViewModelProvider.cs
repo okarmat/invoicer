@@ -23,12 +23,10 @@ namespace Invoicer.Infrastructure
             var stringData = _textDataProvider.GetTextData(path).ToUpper();
             var gasStation = GetGasStation(stringData);
 
-            if (!gasStation.HasValue) return null;
-
             var invoiceParserFactory = new FuelInvoiceParserFactory();
             var invoiceParser = invoiceParserFactory.CreateFuelInvoiceParser(gasStation.Value);
 
-            var result = invoiceParser.GetFuelInvoiceFormViewMode(stringData);
+            var result = invoiceParser.GetFuelInvoiceFormViewModel(stringData);
 
             return result;
         }
@@ -44,7 +42,7 @@ namespace Invoicer.Infrastructure
             else if (data.Contains("CIRCLE"))
                 return GasStationEnum.Circle;
             else
-                return null;
+                return GasStationEnum.Unknown;
         }
     }
 }

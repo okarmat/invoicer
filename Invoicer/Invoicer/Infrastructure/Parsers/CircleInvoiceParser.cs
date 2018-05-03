@@ -11,7 +11,7 @@ namespace Invoicer.Infrastructure.Parsers
 {
     public class CircleInvoiceParser : FuelInvoiceParser, IFuelInvoiceParser
     {
-        public FuelInvoiceFormViewModel GetFuelInvoiceFormViewMode(string data)
+        public new FuelInvoiceFormViewModel GetFuelInvoiceFormViewModel(string data)
         {
             var result = new FuelInvoiceFormViewModel
             {

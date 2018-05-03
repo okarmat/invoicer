@@ -27,6 +27,7 @@ namespace Invoicer.Infrastructure.Parsers
                     fuelInvoiceParser = new OrlenInvoiceParser();
                     break;    
                 default:
+                    fuelInvoiceParser = new FuelInvoiceParser();
                     break;
             }
 
