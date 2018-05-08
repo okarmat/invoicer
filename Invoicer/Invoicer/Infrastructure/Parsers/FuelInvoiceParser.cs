@@ -26,7 +26,7 @@ namespace Invoicer.Infrastructure.Parsers
             return result;
         }
 
-        protected int GetCurrencyType(string data)
+        protected virtual int GetCurrencyType(string data)
         {
             CurrencyTypeEnum currencyType;                       
 
@@ -42,7 +42,7 @@ namespace Invoicer.Infrastructure.Parsers
             return (int)currencyType;
         }
 
-        protected decimal? GetAmount(string data)
+        protected virtual decimal? GetAmount(string data)
         {
             string pattern = @"\d{1,3}(\.|\,)\d{2}";
 
@@ -57,7 +57,7 @@ namespace Invoicer.Infrastructure.Parsers
             return result;
         }
 
-        protected decimal? GetUnitPrice(string data)
+        protected virtual decimal? GetUnitPrice(string data)
         {
             string pattern = @"\d{1,3}(\.|\,)\d{2}";
 
@@ -73,7 +73,7 @@ namespace Invoicer.Infrastructure.Parsers
             return result;
         }
 
-        protected string GetRefuelingDate(string data)
+        protected virtual string GetRefuelingDate(string data)
         {
             string pattern = @"\d{4}-\d{2}-\d{2}";
 
@@ -93,7 +93,7 @@ namespace Invoicer.Infrastructure.Parsers
             return DateTime.ParseExact(result2, "dd-mm-yyyy", null).ToString("yyyy-mm-dd");
         }
 
-        protected decimal? GetQuantity(string data)
+        protected virtual decimal? GetQuantity(string data)
         {
             string pattern = @"\d{1,3}(\.|\,)\d{2}";
 
